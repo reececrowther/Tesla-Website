@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;1,400;1,900&display=swap" rel="stylesheet">
+    <title>Tesla Animation</title>
+</head>
+<body>
+    <div id="bound-one" class="scroll-bound">
+        <div class="extra-padding"></div>
+        <h1>Tesla Model 3</h1>
+        <p class="sub-text">see what's inside</p>
+        <div class="content">
+        <video muted preload>
+            <source src="./video/0001-0100.mkv" >
+            <p>Your user agent does not support the HTML5 Video element.</p>
+        </video>
+    </div>
+    <div class="speed hidden">
+        <p>0-60mph in</p>
+        <h2>3.1s</h2>
+    </div>
+    <div class="range hidden">
+        <p>Range</p>
+        <h2>374 mi</h2>
+    </div>
+    <div class="safetyOne hidden">
+        <h2>Impact Protection</h2>
+    </div>
+    <div class="safetyTwo hidden">
+        <h2>Rigid Structure</h2>
+    </div>
+    <div class="safetyThree hidden">
+        <h2>Very Low Rollover Risk</h2>
+    </div>
+    </div>
+    <footer>
+        <section>
+            <a href="https://portfolio-reececrowther.vercel.app/">Find Out More</a>
+        </section>
+    </footer>
+</body>
+</html>
+
+<script>
+
+const registerVideo = (bound, video) => {
+	bound = document.querySelector(bound);
+	video = document.querySelector(video);
+	const scrollVideo = ()=>{
+		if(video.duration) {
+			const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+			const rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+			const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+			
+			video.currentTime = video.duration * percentScrolled;
+		}
+		requestAnimationFrame(scrollVideo);
+	}
+	requestAnimationFrame(scrollVideo);
+}
+
+
+registerVideo("#bound-one", "#bound-one video");
+
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }else{
+            entry.target.classList.remove('show');
+        }
+    });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
+
+</script>

@@ -1,0 +1,146 @@
+html {
+    height: 100vh;
+}
+
+body {
+    background: #000;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+  
+.scroll-bound {
+    height: 500vh;
+}
+
+.extra-padding{
+    position: relative;
+    margin-top: 1em;
+}
+
+.scroll-bound h1{
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    color: #0e1111;
+    font-weight: 700;
+    font-size: 2.5rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeIn 1s ease forwards;
+}
+
+.scroll-bound .sub-text{
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeIn 1s ease forwards;
+    animation-delay: .3s;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.content {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.content video{
+    pointer-events: none;
+    aspect-ratio: 16 / 9;
+}
+
+.speed{
+    position: relative;
+    z-index: 20;
+    margin-top: 100vh;
+    padding-left: 4em;
+    color: white;
+}
+
+.hidden{
+    transition: 1s;
+    filter: blur(5px);
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0%);
+}
+
+h2{
+    font-size: 4rem;
+    margin: 0;
+}
+
+.range{
+    position: relative;
+    z-index: 20;
+    margin-top: 120vh;
+    padding-right: 4em;
+    color: white;
+    text-align: right;
+}
+
+.safetyOne, .safetyTwo, .safetyThree{
+    position: relative;
+    z-index: 20;
+    margin-top: 130vh;
+    padding-left: 4em;
+    color: white;
+}
+.safetyTwo, .safetyThree{
+    margin-top: 30vh;
+}
+
+.safetyTwo{
+    text-align: center;
+}
+
+.safetyThree{
+    text-align: right;
+    padding-right: 4em;
+}
+
+footer{
+    position: relative;
+    z-index: 30;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    height: 10vh;
+}
+
+footer section{
+    padding: 2em 0;
+}
+
+footer a{
+    padding: .5em .7em;
+    color: white;
+    font-weight: 600;
+    background-color: #8b0000;
+    border-radius: 15px;
+    text-decoration: none;
+}
